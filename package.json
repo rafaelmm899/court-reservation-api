@@ -4,6 +4,7 @@
   "description": "An API built with Express and Sequelize to manage the reservation of sports courts, supporting features like player registration, court availability, and scheduling matches with multiple players.",
   "main": "index.js",
   "scripts": {
+    "dev": "node --env-file=.env --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/rafaelmm899/court-reservation-api/issues"
   },
-  "homepage": "https://github.com/rafaelmm899/court-reservation-api#readme"
+  "homepage": "https://github.com/rafaelmm899/court-reservation-api#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.3"
+  }
 }
