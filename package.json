@@ -1,0 +1,19 @@
+{
+  "name": "court-reservation-api",
+  "version": "1.0.0",
+  "description": "An API built with Express and Sequelize to manage the reservation of sports courts, supporting features like player registration, court availability, and scheduling matches with multiple players.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelmm899/court-reservation-api.git"
+  },
+  "author": "Jose Rafael Mata Milano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelmm899/court-reservation-api/issues"
+  },
+  "homepage": "https://github.com/rafaelmm899/court-reservation-api#readme"
+}
