@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "An API built with Express and Sequelize to manage the reservation of sports courts, supporting features like player registration, court availability, and scheduling matches with multiple players.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "node --env-file=.env --watch index.js",
+    "migrations:generate": "sequelize-cli migration:generate --name",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

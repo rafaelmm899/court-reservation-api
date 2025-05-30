@@ -50,7 +50,7 @@ npx sequelize-cli db:seed:all
 
 ### 5. Start the server
 ```bash
-npm run dev   # Runs with nodemon
+npm run dev
 ```
 
 ---
