@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "node --env-file=.env --watch index.js",
     "migrations:generate": "sequelize-cli migration:generate --name",
+    "migrations:run": "sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
