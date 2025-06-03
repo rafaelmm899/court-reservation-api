@@ -4,6 +4,12 @@ import bcrypt from "bcrypt";
 
 export default (sequelize, DataTypes) => {
     class User extends Model {
+        static associate(models) {
+            this.hasMany(models.Reservation, {
+                foreignKey: 'userId',
+                as: 'reservations'
+            });
+        }
     }
 
     User.init({
@@ -33,7 +39,8 @@ export default (sequelize, DataTypes) => {
                 beforeCreate: async (user) => {
                     user.password = await bcrypt.hash(user.password, 10);
                 }
-            }
+            },
+            underscored: true
         }
     );
 
