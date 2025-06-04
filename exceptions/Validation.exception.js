@@ -9,7 +9,7 @@ export class ValidationException extends Error {
         return {
             code: 'VALIDATION_ERROR',
             message: this.message,
-            errors: this.errors.details.map(err => ({
+            errors: this.errors.map(err => ({
                 field: err.path.join('.'),
                 message: err.message
             }))
