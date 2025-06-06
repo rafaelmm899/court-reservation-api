@@ -17,7 +17,13 @@ export class UserServices {
     }
 
     async findOne(id) {
-        return await models.User.findByPk(id);
+        const user = await models.User.findByPk(id);
+
+        if (!user) {
+            throw new NotFoundException();
+        }
+
+        return user;
     }
 
     async findByEmail(email) {

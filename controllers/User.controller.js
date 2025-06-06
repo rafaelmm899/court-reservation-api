@@ -6,4 +6,8 @@ export class UserController {
         const data = await new UserServices().create(req.body);
         res.json(userTransformer(data));
     }
+
+    static async userLogged(req, res) {
+        res.json(userTransformer(req.user));
+    }
 }
