@@ -5,11 +5,11 @@ export default (sequelize, DataTypes) => {
         static associate(models) {
             this.belongsTo(models.User, {
                 foreignKey: 'userId',
-                as: 'users'
+                as: 'user'
             });
             this.belongsTo(models.Court, {
                 foreignKey: 'courtId',
-                as: 'courts'
+                as: 'court'
             });
         }
     }
