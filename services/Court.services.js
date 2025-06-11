@@ -17,7 +17,7 @@ export class CourtServices {
     }
 
     async findAll(page, perPage) {
-        return models.Court.findAll({ offset: page, limit: perPage });
+        return models.Court.findAll({offset: page, limit: perPage}, {}, {include: ["user", "court"]});
     }
 
     async findOne(id) {
@@ -38,5 +38,9 @@ export class CourtServices {
         }
 
         await models.Court.destroy({ where: { id } });
+    }
+
+    async findAllReservations(id) {
+        return await models.Reservation.findAll({ where: { courtId: id } });
     }
 }

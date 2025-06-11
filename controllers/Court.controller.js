@@ -1,7 +1,7 @@
 import {CourtServices} from "../services/Court.services.js";
 import {courtTransformer} from "../transformers/court.transformer.js";
 import models from "../db/models/index.js";
-import {NotFoundException} from "../exceptions/NotFound.exception.js";
+import {reservationTransformer} from "../transformers/reservation.transformer.js";
 
 export class CourtController {
 
@@ -33,5 +33,13 @@ export class CourtController {
         await new CourtServices().delete(id);
 
         res.status(204).json({});
+    }
+
+    static async findAllReservations(req, res) {
+        const { id } = req.params;
+
+        const reservations = await new CourtServices().findAllReservations(id);
+
+        res.json(reservations.map(reservation => reservationTransformer(reservation)));
     }
 }

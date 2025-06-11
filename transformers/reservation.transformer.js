@@ -6,6 +6,8 @@ export function reservationTransformer(reservation) {
         date: formatDate(reservation.date),
         time: reservation.time,
         userId: reservation.userId,
-        courtId: reservation.courtId
+        courtId: reservation.courtId,
+        createdAt: reservation.createdAt,
+        updatedAt: reservation.updatedAt
     }
 }

@@ -4,10 +4,10 @@ import {ValidationException} from "../exceptions/Validation.exception.js";
 import {NotFoundException} from "../exceptions/NotFound.exception.js";
 
 export class ReservationServices {
-    async findAll(filters = {}) {
+    async findAll(user, filters = {}) {
         const where = this.#buildWhereClause(filters);
 
-        return await models.Reservation.findAll({where});
+        return await models.Reservation.findAll({where: {...where, userId: user.id}});
     }
 
     #buildWhereClause(filters) {
@@ -53,5 +53,45 @@ export class ReservationServices {
                 'court'
             ]
         });
+    }
+
+    async findOne(id) {
+        const reservation = await models.Reservation.findByPk(id, {
+            include: [
+                'user',
+                'court'
+            ]
+        });
+
+        if (!reservation) {
+            throw new NotFoundException();
+        }
+
+        return reservation;
+    }
+
+    async delete(user, id) {
+        const reservation = this.#findOneByUser(id, user);
+
+        reservation.destroy();
+    }
+
+    async updateTime(user, reservationId, newTime) {
+        const reservation = await this.#findOneByUser(reservationId, user);
+
+        reservation.time = newTime;
+
+        await reservation.save();
+
+        return reservation;
+    }
+
+    async #findOneByUser(reservationId, user) {
+        const reservation = await models.Reservation.findOne({where: {id: reservationId, userId: user.id}});
+        if (!reservation) {
+            throw new NotFoundException();
+        }
+
+        return reservation;
     }
 }

@@ -25,4 +25,6 @@ router.delete(
     CourtController.delete
 );
 
+router.get('/:id/reservations', authMiddleware, CourtController.findAllReservations);
+
 export default router;

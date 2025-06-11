@@ -6,7 +6,11 @@ export const listReservationSchema = Joi.object({
 });
 
 export const createReservationSchema = Joi.object({
-    date: Joi.date().required(),
+    date: Joi.date().greater('now').required(),
     time: Joi.string().required(),
     courtId: Joi.number().required()
 });
+
+export const updateReservationSchema = Joi.object({
+    time: Joi.string().regex(/^([0-9]{2})\:([0-9]{2})$/).required(),
+})
