@@ -29,7 +29,8 @@ Create a `.env` file. For development with SQLite:
 ```env
 PORT=3000
 DB_DIALECT=sqlite
-DB_STORAGE=./dev.sqlite3
+NODE_ENV=development
+JWT_SECRET_KEY=secret
 ```
 
 To use PostgreSQL instead:
@@ -37,15 +38,14 @@ To use PostgreSQL instead:
 DB_DIALECT=postgres
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=courts_db
+DB_NAME=court_reservation
 DB_USER=youruser
 DB_PASS=yourpassword
 ```
 
 ### 4. Run migrations & seed data (optional)
 ```bash
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all
+npm run migrations:run
 ```
 
 ### 5. Start the server
@@ -58,46 +58,9 @@ npm run dev
 ## 🧱 API Structure
 
 ### Entities & Relationships
-- **Player**: Represents a person who participates in matches.
+- **User**: Represents a person who participates in matches.
 - **Court**: Represents a sports court that can host matches.
-- **Match**: Represents a game involving multiple players and a court.
-
----
-
-## 🔄 API Endpoints
-
-### Players
-- `GET /players` – List all players
-- `POST /players` – Create a new player
-- `GET /players/:id` – Get a specific player
-- `PUT /players/:id` – Update player info
-- `DELETE /players/:id` – Delete a player
-
-### Courts
-- `GET /courts` – List all courts
-- `POST /courts` – Create a new court
-- `GET /courts/:id` – Get a specific court
-- `PUT /courts/:id` – Update court info
-- `DELETE /courts/:id` – Delete a court
-
-### Matches
-- `GET /matches` – List all matches
-- `POST /matches` – Create a new match (`court_id` and `player_ids[]` required)
-- `GET /matches/:id` – Get match details
-- `PUT /matches/:id` – Update match info
-- `DELETE /matches/:id` – Cancel a match
-
----
-
-## 🔗 Sequelize Associations
-
-```js
-Player.belongsToMany(Match, { through: 'PlayerMatches' });
-Match.belongsToMany(Player, { through: 'PlayerMatches' });
-
-Match.belongsTo(Court);
-Court.hasMany(Match);
-```
+- **Reservation**: Represents a match scheduled for a specific date and time.
 
 ---
 
