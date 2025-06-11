@@ -46,7 +46,11 @@ DB_PASS=yourpassword
 ### 4. Run migrations & seed data (optional)
 ```bash
 npm run migrations:run
+npm run seeders:run 
 ```
+If you run the seeders, you can use admin credentials:
+- Email: `admin@example.com`
+- Password: `admin123`
 
 ### 5. Start the server
 ```bash
