@@ -17,7 +17,8 @@ export class CourtServices {
     }
 
     async findAll(page, perPage) {
-        return models.Court.findAll({offset: page, limit: perPage}, {}, {include: ["user", "court"]});
+        const offset = (page - 1) * perPage;
+        return models.Court.findAll({offset, limit: perPage}, {}, {include: ["user", "court"]});
     }
 
     async findOne(id) {

@@ -13,7 +13,7 @@ export class CourtController {
 
     static async findAll(req, res) {
 
-        const { page= 0, perPage=  5 } = req.query;
+        const { page= 1, perPage=  10 } = req.query;
 
         const courts = await new CourtServices().findAll(page, perPage);
 
