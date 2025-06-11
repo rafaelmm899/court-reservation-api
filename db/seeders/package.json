@@ -1,0 +1,12 @@
+{
+  "name": "seeders",
+  "version": "1.0.0",
+  "main": "20250611215744-user-seeder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
